@@ -33,6 +33,7 @@ public class A01_WrapperClass_Boxing {
 		 * 不適切な使用例
 		 */
 		double d1 = 10;//① OK
+		double dd2 = ibjiInteger;// OK
 //		Double double1 = 10;//② NG 型の不一致: int から Double には変換できません
 		Double double2 = 10.0;// OK
 		
