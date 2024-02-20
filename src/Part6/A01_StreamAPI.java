@@ -19,6 +19,21 @@ import java.util.List;
  *
  */
 
+/**
+ * 公式ページの出題内容は以下の通りです。
+ * 【Java ストリーム API】
+ * 
+ * 基本バージョンの map() メソッドを含む peek() および map() メソッドを使用してオブジェクトからデータを抽出する
+ * findFirst、findAny、anyMatch、allMatch、noneMatch などの検索メソッドを使用してデータを検索する
+ * Optional クラスを使用する
+ * ストリームのデータ・メソッドと計算メソッドを使用するコードを作成する
+ * ストリーム API を使用してコレクションをソートする
+ * collect メソッドを使用してコレクションに結果を保存する。Collectors クラスを使用してデータをグループ化/パーティション化する
+ * flatMap() メソッドを使用する
+ * 参考(https://education.oracle.com/ja/java-se-8-programmer-ii/pexam_1Z0-809)
+ *
+ */
+
 public class A01_StreamAPI {
 
 	public static void main(String[] args) {
