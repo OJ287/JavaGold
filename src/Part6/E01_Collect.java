@@ -1,4 +1,9 @@
 package Part6;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * 終端操作の項目ではまだ扱っていないStreamインタフェースのcollectメソッドについて紹介
  * collect()：ストリームから要素をまとめて一つのオブジェクトを取得
@@ -39,10 +44,40 @@ public class E01_Collect {
 
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
+		// toList()
+		Stream<String> stream1 = Stream.of("naoki", "akko", "ami");
+		List<String> result1 = stream1.collect(Collectors.toList());
+		System.out.println(result1);//[naoki, akko, ami]
+		
+		// joining()
+		Stream<String> stream2 = Stream.of("naoki", "akko", "ami");
+		String result2 = stream2.collect(Collectors.joining());
+		System.out.println(result2);//naokiakkoami
+		
+		// summing()
+		Stream<String> stream3 = Stream.of("naoki", "akko", "ami");
+		Integer result3 = stream3.collect(Collectors.summingInt(t -> t.length()));
+		System.out.println(result3);//12
+		
+		// averaging()
+		Stream<String> stream4 = Stream.of("naoki", "akko", "ami");
+		Double result4 = stream4.collect(Collectors.averagingDouble(t -> t.length()));
+		System.out.println(result4);//4.0
+		
+		
+		
 
 	}
 
 }
+
+
+
+
+
+
+
+
 
 
 
