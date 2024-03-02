@@ -31,12 +31,12 @@ public class E03_Collect {
 		 * 
 		 */
 		// 構文１
-		Stream<String> stream1 = Stream.of("belle", "akko", "ami", "bob", "nao");
+		Stream<String> stream1 = Stream.of("belle", "akko", "ami", "bob", "nao", "ami", "bob", "nao");
 		Map<String, List<String>> map1 = stream1.collect(Collectors.groupingBy(s -> s.substring(0, 1)));// 頭もじでグルーピング
-		System.out.println(map1);//{a=[akko, ami], b=[belle, bob], n=[nao]}
+		System.out.println(map1);//{a=[akko, ami, ami], b=[belle, bob, bob], n=[nao, nao]}
 		
 		// 構文２,1
-		Stream<String> stream2 = Stream.of("belle", "akko", "ami", "bob", "nao");
+		Stream<String> stream2 = Stream.of("belle", "akko", "ami", "bob", "nao", "ami", "bob", "nao");
 		Map<String, Set<String>> map2 = stream2.collect(Collectors.groupingBy(s -> s.substring(0, 1), Collectors.toSet()));
 		System.out.println(map2);//{a=[akko, ami], b=[bob, belle], n=[nao]}
 

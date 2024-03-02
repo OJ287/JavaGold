@@ -74,9 +74,9 @@ public class C01_StreamIntermediateOperations {
 		System.out.println();
 		
 		//Stream<String> → Stream<Integer>
-		Stream<String> stream33 = Stream.of("naoki", "akko", "ami");
+		Stream<String> stream33 = Stream.of("naoki", "akko", "ami",  "123");
 		Stream<Integer> stream34 = stream33.map(s -> s.length());
-		stream34.forEach(x -> System.out.print(x + " "));//5 4 3 
+		stream34.forEach(x -> System.out.print(x + " "));//5 4 3 3 
 		System.out.println();
 		
 		//Integer → Integer

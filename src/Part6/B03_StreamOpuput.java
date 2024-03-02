@@ -66,6 +66,7 @@ public class B03_StreamOpuput {
 		result2.ifPresent(System.out::println);//aaa
 		System.out.println(result1.get());
 		System.out.println(result2.get());
+		System.out.println(list1.stream().sorted((s1, s2) -> s1.length() -s2.length()).findFirst().get() + "-----");//c
 		
 		/*
 		 * B01_StreamForEachで紹介した主な終端操作のメソッドのうち、戻り値がOptional型を持つ

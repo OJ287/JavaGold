@@ -11,7 +11,7 @@ public class E02_Collect {
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
 		// toSet()
-		Stream<String> stream1 = Stream.of("naoki", "akko", "ami");
+		Stream<String> stream1 = Stream.of("naoki", "akko", "ami", "ami");
 		Set<String> set = stream1.collect(Collectors.toSet());
 		System.out.println(set);//[naoki, akko, ami]
 		
@@ -52,7 +52,7 @@ public class E02_Collect {
 		 * BinaryOperator：キーが同じだった場合のマージ処理を指定する
 		 *　また、マージ結果を別のマップに格納する場合は構文３のtoMapを使用する
 		 */
-		Stream<String> stream4 = Stream.of("nao", "akko", "ami");
+		Stream<String> stream4 = Stream.of("nao", "akko", "ami", "ami");
 		Map<Integer, String> map4 = stream4.collect(Collectors.toMap(String::length, s -> s, (s1, s2) -> s1 + ":" + s2));
 		System.out.println(map4);//{3=nao:ami, 4=akko}
 		System.out.println(map4.getClass());//class java.util.HashMap
@@ -61,6 +61,7 @@ public class E02_Collect {
 		Map<Integer, String> map5 = stream5.collect(Collectors.toMap(String::length, s -> s, (s1, s2) -> s1 + ":" + s2, TreeMap::new));
 		System.out.println(map5);//{3=nao:ami, 4=akko}
 		System.out.println(map5.getClass());//class java.util.TreeMap
+		
 
 	}
 

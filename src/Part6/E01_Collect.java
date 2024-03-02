@@ -56,12 +56,16 @@ public class E01_Collect {
 		
 		// summing()
 		Stream<String> stream3 = Stream.of("naoki", "akko", "ami");
+		int result30 = stream3.collect(Collectors.summingInt(t -> t.length()));
 		Integer result3 = stream3.collect(Collectors.summingInt(t -> t.length()));
+		Double result33 = stream3.collect(Collectors.summingDouble(t -> t.length()));
 		System.out.println(result3);//12
 		
-		// averaging()
+		// averaging()  averagingInt  averagingDouble   averagingLong戻り値の型は全てDouble型となる
 		Stream<String> stream4 = Stream.of("naoki", "akko", "ami");
 		Double result4 = stream4.collect(Collectors.averagingDouble(t -> t.length()));
+//		Integer result41 = stream4.collect(Collectors.averagingInt(t -> t.length()));//型の不一致: Double から Integer には変換できません
+		Double result42 = stream4.collect(Collectors.averagingLong(t -> t.length()));
 		System.out.println(result4);//4.0
 		
 		

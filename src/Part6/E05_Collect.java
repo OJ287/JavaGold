@@ -11,7 +11,7 @@ public class E05_Collect {
 	public static void main(String[] args) {
 		/*
 		 * mapping()
-		 * map()と同様に、ストリームの各要素に対して行いたい処理を指定する
+		 * Streamインタフェースの中間操作のmap()と同様に、ストリームの各要素に対して行いたい処理を指定する
 		 * 正し、引数を二つ持っている
 		 * 第一引数に要素に対して行たい処理
 		 * 第二引数はマップ後に行たい処理を指定

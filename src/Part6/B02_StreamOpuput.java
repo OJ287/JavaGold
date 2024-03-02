@@ -110,6 +110,8 @@ public class B02_StreamOpuput {
 		String[] ary4 = Stream.of("a","b").toArray(String[]::new);//ストリームからString型の配列を取得できる
 		System.out.println("ary1:" + Arrays.toString(ary1));//ary1:[1, 2, 3, 4, 5, 6, 7, 8, 9]
 		System.out.println("ary2:" + Arrays.toString(ary2));//ary2:[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		System.out.println("ary3:" + Arrays.toString(ary3));//ary3:[a, b]
+		System.out.println("ary4:" + Arrays.toString(ary4));//ary4:[a, b]
 		System.out.println("ary3:" + ary3.getClass());//ary3:class [Ljava.lang.Object;
 		System.out.println("ary4:" + ary4.getClass());//ary4:class [Ljava.lang.String;
 		
