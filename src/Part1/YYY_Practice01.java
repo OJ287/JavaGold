@@ -2,6 +2,7 @@ package Part1;
 
 public class YYY_Practice01 {
 	/**
+	 *
 	 * 答え：
 	 * 	1:ADE		
 	 *  2:A
@@ -21,6 +22,9 @@ public class YYY_Practice01 {
 	 *  15×:ACE　→　ABE
 	 *  	オーバーライドルール：非staticメソッドをstaticメソッドでオーバーライドはできない
 	 *  	throwsについて、スーパークラスのメソッドがthrowsを使用しない場合、オーバーライドも使用しない、またはRuntimeExceptionをスロー
+	 *
+	 * 第二次；
+	 * ADE  A  D  C   D   BE     E    ABDE    E   A>E    C    E    E    E    ABE
 	 */
 
 	public static void main(String[] args) {

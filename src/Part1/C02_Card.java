@@ -9,7 +9,7 @@ public enum C02_Card {
 	 */
 	SPADES(100), CLUBS(200), DIAMONDS(300), HEARTS();// HEARTS：引数なければ、カッコの省略可能→HEARTS;
 
-	private int a;
+	private final int a;
 
 	C02_Card() {
 		this.a = 500;
@@ -22,4 +22,10 @@ public enum C02_Card {
 	public int GetA() {
 		return this.a;
 	}
+
+    @Override
+    public String toString() {
+        return super.toString();//オーバーライド可能
+    }
+
 }

@@ -2,13 +2,13 @@ package Part1;
 
 public class G01_LocalClass {
 	/**
-	 * ローからクラスとは、あるクラスのメソッドないに定義したクラスである
+	 * ローからクラスとは、あるクラスのメソッドのうちに定義したクラスである
 	 * メソッド内でのみ有効、クラスメンバで使用していたアクセス修飾子やstaticは使用できない
 	 * ローカラクラスはstaticクラスとして作成出来ない、非staticクラス（インナークラス）のみ作成できる
 	 */
 
-	private static int a = 1;
-	private int b = 2;
+	private static final int a = 1;
+	private final int b = 2;
 	void methodOuter(final int c, int d) {
 		final int e =5;
 		int f = 6;
@@ -21,7 +21,7 @@ public class G01_LocalClass {
 				System.out.println(e);
 				System.out.println(f);
 				/*
-				 * cdefメソッド内のローカラ変数にアクセスしていますが、final定数であることが条件
+				 * cdef：メソッド内のローカラ変数にアクセスしていますが、final定数であることが条件
 				 * しかし、dとfは明示的なfinal指定をしていないが、SE8以降ローから変数には暗黙的にfinal修飾子が付与されるため
 				 * 再代入はダメ
 				 */

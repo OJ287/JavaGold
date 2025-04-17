@@ -18,13 +18,20 @@ public class E02_IF extends Super implements E02_IF01,E01_IF02 {
 	 */
 	
 	/*
-	 * デフォルトメソッドは実装クラスでオーバーライドすることは可能
+	 * E02_IF02のサブE02_IF03はmethod３をデフォルトメソッドとしてオーバーライド
+	 * MyClass2はE02_IF02の実装クラスとしてmethod３を具象メソッドとしてオーバーライドする
+	 * E02_IF03を実装して、MyClass2を継承したMyClass3クラスはコンパイルエラーにならない
+	 * 原因：JAVAでは常にクラスが優先されるため、E02_IF03の実装クラスであるMyClass2クラスが優先となる
 	 */
-	@Override
-	public void method2() {
-		// TODO 自動生成されたメソッド・スタブ
-//		E02_IF01.super.method2();
-		System.out.println("E02_IF method2");
+	public static void main(String[] args) {
+		MyClass3 myClass3 = new MyClass3();
+		myClass3.method3();//出力：MyClass2 method3　　E02_IF03 method3ではない。インタフェースよりクラスが優先となる
+
+		MyClass33 myClass33 = new MyClass33();
+		myClass33.method3();// MyClass2 method3  E02_IF02に抽象メソッドがあるが、実現クラスMyClass2があれば、エラーとならない
+
+		MyClass4 myClass4 = new MyClass4();
+		myClass4.method3();// E02_IF03 method3
 	}
 
 	@Override
@@ -41,16 +48,14 @@ public class E02_IF extends Super implements E02_IF01,E01_IF02 {
 //	}
 	
 	/*
-	 * 上記でコンパイルエラーになるけど、以下は大丈夫です
-	 * MyClassでオーバーライドすることでコンパイル、実行可能。method３が特定できましたから
+	 * デフォルトメソッドは実装クラスでオーバーライドすることは可能
+	 * オーバーライドするメソッド（interfaceで定義するメソッド）が、publicをつける必要がある
 	 */
-	class MyClass implements E02_IF03,E02_IF04{
-		@Override
-		public void method3() {
-			// TODO 自動生成されたメソッド・スタブ
-//			E02_IF03.super.method3();
-			System.out.println("MyClass method3のオーバーライド");
-		}
+	@Override
+	public void method2() {
+		// TODO 自動生成されたメソッド・スタブ
+//		E02_IF01.super.method2();
+		System.out.println("E02_IF method2");
 	}
 	
 	/*
@@ -73,14 +78,24 @@ public class E02_IF extends Super implements E02_IF01,E01_IF02 {
 //	}
 	
 	/*
-	 * E02_IF02のサブE02_IF03はmethod３をデフォルトメソッドとしてオーバーライド
-	 * MyClass2はE02_IF02の実装クラスとしてmethod３を具象メソッドとしてオーバーライドする
-	 * E02_IF03を実装して、MyClass2を継承したMyClass3クラスはコンパイルエラーにならない
-	 * 原因：JAVAでは常にクラスが優先されるため、E02_IF03の実装クラスであるMyClass2クラスが優先となる
+	 * 上記でコンパイルエラーになるけど、以下は大丈夫です
+	 * MyClassでオーバーライドすることでコンパイル、実行可能。method３が特定できましたから
 	 */
-	public static void main(String[] args) {
-		MyClass3 myClass3 = new MyClass3();
-		myClass3.method3();//出力：MyClass2 method3　　E02_IF03 method3ではない。インタフェースよりクラスが優先となる
+	class MyClass implements E02_IF03,E02_IF04{
+		/**
+		 * 如果 E02_IF02 只声明抽象方法而 E02_IF03 提供 default 实现：
+		 * 这种情况下是合法的，通常不会报错。
+		 * <p>
+		 * 如果 E02_IF03 和 E02_IF04 都提供 default 实现：
+		 * 则必须在类 MyClass 中显式覆盖 default() 以解决冲突
+		 * 看最后的MyClass4和MyClass5
+		 */
+		@Override
+		public void method3() {
+			// TODO 自動生成されたメソッド・スタブ
+//			E02_IF03.super.method3();
+			System.out.println("MyClass method3のオーバーライド");
+		}
 	}
 	
 }
@@ -93,6 +108,7 @@ class MyClass1 implements E02_IF03,E02_IF04{
 		E02_IF03.super.method3();
 		E02_IF04.super.method3();
 	}
+
 }
 
 //「MyClass2はE02_IF02の実装クラスとしてmethod３を具象メソッドとしてオーバーライドする
@@ -105,6 +121,22 @@ class MyClass2 implements E02_IF02{
 	}
 	
 }
-class MyClass3 extends MyClass2 implements E02_IF03{
-	
+class MyClass3 extends MyClass2 implements E02_IF03 {
+
 }
+
+class MyClass33 extends MyClass2 implements E02_IF02 {
+
+}
+
+// 没问题
+class MyClass4 implements E02_IF02, E02_IF03 {
+
+}
+
+// Part1.MyClass5 从类型 Part1.E02_IF03 和 Part1.E02_IF04 继承 method3() 的不相关默认值
+// コンパイルエラー
+//class MyClass5 implements E02_IF03,E02_IF04{
+//
+//}
+

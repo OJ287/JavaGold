@@ -41,8 +41,11 @@ public class C01_EnumClass {
 		for (C02_Card card : C02_Card.values()) {// EnumにはcompareTo()メソッドを実装しており、定数が宣言された順番で管理するよう実装されていうます
 //			System.out.print(card + "    ");
 			System.out.print(card.toString() + "    ");//任意でオーバーライドできる
-			System.out.print(card.name() + "    ");//オーバーライド出来ない
-		}
+            // EnumクラスはComparableインタフェースを実装しており、各定数は列記した順番で管理される
+            if (card.equals(C02_Card.SPADES)) {
+                System.out.print(card.name() + "    ");//オーバーライド出来ない
+            }
+        }
 		Vals.A.foo();// static定数なので、クラスで呼び出すのは可能
 	}
 

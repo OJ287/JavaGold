@@ -52,21 +52,22 @@ public class F01_INNER {
 		 * 		外側クラス名.ネストクラス名　変数　＝　new 外側クラス名（）.new 非staticクラス名（）；
 		 * 		OutClass.A a = new OutClass().new A();
 		 * staticクラスの場合：
-		 * 		外側クラス名.staticネストクラス名　変数　＝　new 外側クラス名（）.非staticクラス名（）；
+		 * 		外側クラス名.staticネストクラス名　変数　＝　new 外側クラス名.非staticクラス名（）；
 		 * 		OutClass.B a = new OutClass.B();
 		 * ②：外側クラスのmainメソッドでネストクラスをインスタンス化にする（例:F02_INNER）
 		 * 
 		 */
 		Outer.A a = new Outer().new A();
 		Outer.B b = new Outer.B();
-		a.method1();b.method2();
+		a.method1();
+        Outer.B.method2();
 		
 	}
 
 }
 class Outer {
-	private int val1=100;
-	private static int val2 =200;
+	private final int val1=100;
+	private static final int val2 =200;
 
 	//INNER Clsss
 	class A{
