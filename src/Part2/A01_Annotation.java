@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Part1.YYY_Practice01;
-
 public class A01_Annotation {
 	/**
 	 * アノテーションの使用目的:
@@ -13,7 +11,7 @@ public class A01_Annotation {
 	 * 実行するJVMに付加情報を伝える
 	 */
 	/**
-	 * よく使用されるJAVAアノテーション
+	 * よく使用されるJAVAアノテーションjava.langパッケージで提供されてるので、インポット文不要
 	 * @Override
 	 * 		スーパークラスのメソッドをオーバーライドすることを示す
 	 * @FunctionalInterface
@@ -34,7 +32,7 @@ public class A01_Annotation {
 		 * @FunctionalInterface
 		 * 	関数型インタフェースとしての要件を満たしているかをチェックする
 		 * 要件：
-		 * 	＠単一の抽象メソッドを持つインタフェースとする
+		 * 	＠単一の抽象メソッドを持つインタフェースとする  有且必须有一个抽象方法（Object的方法不算在内）
 		 * 	＠ただし、staticメソッドやデフォルトメソッドは定義可能
 		 * 	＠Objectクラスのpublicメソッドは抽象メソッドとしての宣言は可能
 		 * 	＠関数型インタフェースとして明示する場合は、@FunctionalInterfaceを付与する
@@ -59,7 +57,7 @@ public class A01_Annotation {
 		 * 指定できる主な警告は
 		 * 	・unchecked：List<String>の代わりにListを使用など、型の使用に関連する警告を抑制する
 		 *  ・deprecation：@Deprecatedつけられた要素を使用する警告を抑制する
-		 *  書き方は以下の五つがある
+		 *  書き方は以下の五つがある。メンバがvalue一つだけので、省略してもOK
 		 */
 //		@SuppressWarnings(value = {"unchecked"})
 //		@SuppressWarnings(value = {"unchecked", "deprecation"})
