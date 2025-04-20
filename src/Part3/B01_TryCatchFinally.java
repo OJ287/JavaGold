@@ -1,9 +1,5 @@
 package Part3;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 /***
  *try-catch-finally
  *例外処理を行う方法には二つある
@@ -66,6 +62,7 @@ public class B01_TryCatchFinally {
 		 * 注意点：
 		 * 	・継承関係ある例外クラスは列記できない
 		 * 　・キャッチした参照変数は暗黙的にfinalになる
+		 * 			eに値の再代入することができない
 		 */
 		String string  = "A";
 		int[] ary2 = {10,0};

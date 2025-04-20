@@ -2,6 +2,8 @@ package Part3;
 
 public class YYY_Practice01 {
 	/**
+	 * BD  AC    AB   C→D   ACE→BCE   B    C→E    CDE  E   F　　　CD→CE    BE   C→D(第一次复习)
+	 *
 	 * 1:BD
 	 * 2:AC
 	 * 3:AB

@@ -1,6 +1,5 @@
 package Part3;
 
-import java.lang.reflect.Method;
 import java.sql.SQLException;
 
 public class F01_Throwable {
@@ -11,6 +10,14 @@ public class F01_Throwable {
 	 * Throwableクラスのメソッド：
 	 * ①：final void addSuppressed(Throwable exception)
 	 * 		この例外を提供する目的で抑制された例外に、指定された例外を追加する
+     * 项目	内容
+     * 📌 方法是 final	子类不能重写它
+     * ❌ Null 报错	传入 null 会抛 NullPointerException
+     * ❌ 自己 suppress 自己	会抛 IllegalArgumentException，不能把异常自己挂自己身上
+     * 那如果你这么写：
+     * Exception ex = new Exception("我是异常");
+     * ex.addSuppressed(ex); // ❌ 错误：自己 suppress 自己
+     * 你就是试图把 ex 自己加到自己身上作为附属异常，这是 不允许的！
 	 * ②：final Throwable[] getSuppressed()
 	 * 		try-with-resources文によって抑制された例外をすべて含む配列を返す
 	 */
@@ -43,8 +50,8 @@ public class F01_Throwable {
 			closed:myResource21
 			e.getMessage() :MyResource2.method()のエラー
 			e.getSuppressed()情報
-			    MyResource2.close()のエラー
-			    MyResource2.close()のエラー
+				MyResource2.close()のエラー：myResource22
+				MyResource2.close()のエラー：myResource21
 			finally処理
 		 */
 
@@ -53,7 +60,7 @@ public class F01_Throwable {
 }
 
 class MyResource2 implements AutoCloseable{
-	private String msgString ;
+	private final String msgString ;
 	public MyResource2(String msgString) {
 		this.msgString = msgString;
 		System.out.println(msgString+"  Start");
@@ -66,6 +73,6 @@ class MyResource2 implements AutoCloseable{
 	public void close() throws SQLException {
 		// TODO 自動生成されたメソッド・スタブ
 		System.out.println("closed:" + msgString);
-		throw new SQLException("MyResource2.close()のエラー");
+        throw new SQLException("MyResource2.close()のエラー：" + msgString);
 	}
 }
