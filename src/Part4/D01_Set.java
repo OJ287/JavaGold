@@ -20,8 +20,8 @@ public class D01_Set {
 		 * 		ソートも順序づけも行われないことが前提となる。同期性はサポートしていない
 		 */
 		/*
-		 * ・SortedSet
-		 * 		SortedSetインタフェースの実装クラスである。ソートされたデータ項目を得られるが、
+         * ・TreeSet
+         * 		SortedSetインタフェースの実装クラスである。ソートされた(自然順序)データ項目を得られるが、
 		 * 		アクセス速度は HashSet よりも低速である。同期性はサポートしていない
 		 */
 		/*
@@ -71,7 +71,7 @@ public class D01_Set {
 	}
 }
 class Foo{
-	private String string;
+	private final String string;
 	public Foo(String string) {
 		this.string = string;
 	}

@@ -108,6 +108,77 @@ public class B02_Collection {
 				実装によっては同期性を備えている場合があり、そうしたものはスレッドセーフをサポートしている
 				（マルチスレッド環境で実行可能である）といいます。一方で、同期性を備えていない実装も存在します（同期性については第8章で解説）
 		 */
+
+		/**
+		 * 如何实现 Map 的“removeAll”效果？
+		 * 方式一：移除某些 key（最常见）
+		 * Map<String, String> map = new HashMap<>();
+		 * map.put("A", "Apple");
+		 * map.put("B", "Banana");
+		 * map.put("C", "Cherry");
+		 *
+		 * Set<String> keysToRemove = Set.of("A", "C");
+		 *
+		 * // 移除这些 key
+		 * map.keySet().removeAll(keysToRemove);
+		 *
+		 * System.out.println(map); // 输出：{B=Banana}
+		 *
+		 *  方式二：移除 value 在某个列表里的键值对
+		 *  Collection<String> valuesToRemove = List.of("Banana", "Cherry");
+		 *
+		 * // 用 Iterator 安全删除
+		 * Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
+		 * while (it.hasNext()) {
+		 *     if (valuesToRemove.contains(it.next().getValue())) {
+		 *         it.remove();
+		 *     }
+		 * }
+		 *
+		 * 方式三（Java 8+）：使用 removeIf 简化（推荐）
+		 * map.entrySet().removeIf(entry -> valuesToRemove.contains(entry.getValue()));
+		 *
+		 *
+		 *
+		 *
+		 * keySet() 方法
+		 * Set<K> keySet()
+		 * 返回这个 Map 所有“键”（key）组成的 Set 视图。
+		 * 特点：
+		 * 你操作 keySet() 返回的集合，就会影响原始 Map
+		 * 常用于：遍历所有键、批量删除 key 等。
+		 *
+		 * Map<String, String> map = new HashMap<>();
+		 * map.put("A", "Apple");
+		 * map.put("B", "Banana");
+		 *
+		 * Set<String> keys = map.keySet(); // keys = ["A", "B"]
+		 * System.out.println(keys);
+		 *
+		 * keys.remove("A"); // 也会从原始 map 中移除"A"
+		 * System.out.println(map); // 输出：{B=Banana}
+		 *
+		 *
+		 *
+		 * entrySet() 方法
+		 * Set<Map.Entry<K, V>> entrySet()
+		 * 返回这个 Map 所有“键值对”（Entry）组成的 Set 视图。
+		 * 特点：
+		 * 每个 Map.Entry<K, V> 对象表示一个 key 和 value。
+		 * 你可以通过它同时访问键和值，或者根据值删除 entry。
+		 * 常用于：遍历整个 Map 的内容、用条件批量移除 entry。
+		 * Map<String, String> map = new HashMap<>();
+		 * map.put("A", "Apple");
+		 * map.put("B", "Banana");
+		 *
+		 * for (Map.Entry<String, String> entry : map.entrySet()) {
+		 *     System.out.println("key=" + entry.getKey() + ", value=" + entry.getValue());
+		 * }
+		 *
+		 * // 删除 value 是 "Banana" 的项
+		 * map.entrySet().removeIf(entry -> "Banana".equals(entry.getValue()));
+		 * System.out.println(map); // 输出：{A=Apple}
+		 */
 	}
 
 }

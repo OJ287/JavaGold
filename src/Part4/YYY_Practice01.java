@@ -1,19 +1,11 @@
 package Part4;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 
 public class YYY_Practice01 {
 	/**
-	 * 答え：
+	 * 第一次复习：
+	 * 答え：D   C　  F→E    AF→AD    AB→AE    AF→AD    B    C    D→C    E    AE    BC    BDF   A    A
 	 * 	1×:B　→　D
 	 *  2:C
 	 *  3×:F　→　E
@@ -125,8 +117,8 @@ public class YYY_Practice01 {
 
 
 class Test15 implements Comparable<Test15>,Comparator<Test15>{
-	private String msg;
-	private int number;
+	private final String msg;
+	private final int number;
 	public Test15(String msg, int number) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.msg = msg;

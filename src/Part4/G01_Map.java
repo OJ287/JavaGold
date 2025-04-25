@@ -17,15 +17,18 @@ public class G01_Map {
 		 * ・HashMap
 		 * 		ハッシュテーブルのデータ構造体をベースとした実装である。マップ内に各キーと値のペアは順不同で格納される
 		 * 		またnullをキーあるいは値として使用できる。同期性はサポートしていない
+         *     key允许有一个null，value允许有多个null
 		 * ・LinkedHashMap
 		 * 		全てのエントリに対する二重リンクリストを保持するという点でHashMapと異なっている
 		 * 		また、通常はマップにキーに挿入された順番を元にした、繰り返し順序も規定される。
 		 * 		データ項目順序づけが維持される必要がある場合、このリストが利用される
 		 * 		同期性はサポートしていない
-		 * ・TreeMap
+         *     key允许有一个null，value允许有多个null
+         * ・TreeMap    实装了sortmap接口也实装了navigablemap接口
 		 * 		SortedMapインタフェースのサブインタフェースNavigableMapを実装したクラスである
 		 * 		この場合のマップは、キーの昇順による順序づけ維持される（ソートされる）
 		 * 		同期性はサポートしていない
+         *     key不允许有null，value允许有多个null
 		 * 		NavigableMap：
 		 * 			指定されたキーに対し、もっと近い要素を返す
 		 * 			という意味は、指定したキーが存在していない場合、指定したキーに近いキー（と値）を検索できる
@@ -52,8 +55,8 @@ public class G01_Map {
 		if(navigableMap1.containsKey(keyString)) {
 			System.out.println("get(2000)" + navigableMap1.get(keyString));
 		}else {
-			System.out.println(navigableMap1.higherKey(keyString));//2222
-			System.out.println(navigableMap1.lowerKey(keyString));//1111
+            System.out.println(navigableMap1.higherKey(keyString));//2222   找不到就返回null
+            System.out.println(navigableMap1.lowerKey(keyString));//1111   找不到就返回null
 		}
 		
 		NavigableMap<String, String> navigableMap2 = navigableMap1.subMap("2000", false, "3500", false);
