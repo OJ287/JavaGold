@@ -79,6 +79,7 @@ public class C01_LambdaExpression {
 		 * 右辺：
 		 * returnを記述した場合は、最後が文で終わるようにセミコロンが必須
 		 * return を省略した場合、{}も省略する必要がある。セミコロンの省略は可能になる
+		 * return必须写在{}里面，所以：{}省略的话，return也必须省略；return省略的话，{}也必须省略。
 		 */
 		list1.replaceAll( str -> str.toUpperCase());
 		System.out.println(list1);
@@ -121,6 +122,8 @@ public class C01_LambdaExpression {
 			return "Hello " + str;
 		};
 		System.out.println(function1.apply("method"));
+//		c = 50;//System.out.println("c:" + c);:lambda 表达式中使用的变量应为 final 或有效 final
+//		所以就是不仅在匿名class前，在匿名class之后再代入数值都不算是实质的final了
 		
 		/*
 		 * iは初期化してから、ラムダ式まで再代入していないので、実質的finalとして() -> i　ラムダ式では扱っている。
@@ -129,6 +132,10 @@ public class C01_LambdaExpression {
 		Supplier<Integer> supplier = () -> i;//Local variable i defined in an enclosing scope must be final or effectively final
 //		i++;
 		System.out.println(supplier.get());
+	}
+
+	public void methodA() {
+		a = 20; // 不是匿名class所在的方法内，改变变量就不会报错
 	}
 }
 

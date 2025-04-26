@@ -1,23 +1,18 @@
 package Part5;
 
-import java.io.StreamCorruptedException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.*;
+import java.util.function.*;
 
 /**
  * Function<String, Integer> f = str -> Integer.parseInt(str);
- * このように、抽象メソッドの引数の個数および型と、
- * 処理内で使用しているメソッドの引数の個数および型が一致している場合、メソッド参照の記述が可能です。
- * 
+ * このように、抽象メソッドの引数の個数および型と、apply的引数和返回值是定义的Function<String, Integer>
+ * 処理内で使用しているメソッド（Integer.parseInt）の引数の個数および型が一致している場合、parseInt的引数是String返回值是int
+ * メソッド参照の記述が可能です。
+ * apply的参数给parseInt，parseInt的返回值作为apply的返回值
+ * apply的第一个参数给処理内で使用しているメソッド的実行する対象のオブジェクト，不需要実行する対象のオブジェクト的话再给
+ * 処理内で使用しているメソッド的参数，参数也没有的话给処理内で使用しているメソッド的返回值
+ * 所以顺序  実行する対象のオブジェクト →  処理内で使用しているメソッド的参数   →  処理内で使用しているメソッド的返回值
+ *
  * 構文：
  * 	クラス名／インスタンス変数名：：メソッド名
  * 　クラス名／インスタンス変数名の後に「：」を指定し、呼び出すメソッド名をを指定します。
@@ -100,8 +95,8 @@ public class D01_MethodReference {
 		list4.forEach(a -> System.out.print(a + ","));//OK
 //		list4.forEach(System.out::print + ",");//NG
 		System.out.println();
-		
-		//インスタンスメソッド参照２
+
+		//インスタンスメソッド参照２。apply（）を呼び出す時に指定した引数が、toUpperCaseを実行する対象のオブジェクトとして扱われる
 		UnaryOperator<String> unaryOperator1 = String::toUpperCase;
 		System.out.println(unaryOperator1.apply("test1"));
 		String string2 = "test2";
@@ -170,6 +165,7 @@ public class D01_MethodReference {
 		System.out.println(set22.apply(set11).size());//2
 		
 		//Function<Integer, String[]> function100 = i -> new String[i];
+		// コンストラクタ参照はクラスのインスタンス化だけではなく、配列の生成にも使用可能
 		Function<Integer, String[]> function100 = String[]::new;
 		System.out.println(function100.apply(5).length);
 		

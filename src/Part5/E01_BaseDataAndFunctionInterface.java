@@ -1,10 +1,8 @@
 package Part5;
 
-import java.util.function.DoubleFunction;
 import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 import java.util.function.IntToDoubleFunction;
-import java.util.function.ToIntBiFunction;
 import java.util.function.ToIntFunction;
 
 /**
@@ -20,6 +18,8 @@ import java.util.function.ToIntFunction;
  * 　　IntUnaryOprator  int applyAsInt(int value)
  * 　　IntBinaryOpertor  R applyAsInt(int value1, int value2)
  * int double long 上記命名を変更して対応する
+ * Supplier、UnaryOprator、BinaryOpertorのメソッドがget()/apply()ではない、getAsInt()/applyAsInt()となる
+ * 原因是，As后面是返回值的数据类型，前几个是引数定下来，后几个是返回值的型也定下来，AS是定下来的返回值数据类型
  * 
  * booleanを特定したインタフェースは下記のみ
  * 　　BooleanSupplier  boolean getAsBoolean()
@@ -65,7 +65,7 @@ public class E01_BaseDataAndFunctionInterface {
 //		IntToDoubleFunction intToDoubleFunction1 = i -> i* Math.PI;
 		IntToDoubleFunction intToDoubleFunction1 = (int i) -> {return i * Math.PI;};
 //		IntToDoubleFunction intToDoubleFunction11 = (Integer i) -> {return i* Math.PI;};//NG  Lambda expression's parameter i is expected to be of type int
-		//ラムダ式のメソッドの戻り値ではBoxing　UnBoxing自動変換が行われ、引数に関しては行われない
+		//********ラムダ式のメソッドの戻り値ではBoxing　UnBoxing自動変換が行われ、引数に関しては行われない***************/
 		double ans5 = intToDoubleFunction1.applyAsDouble(10);
 		Double ans55 = intToDoubleFunction1.applyAsDouble(10);
 		
