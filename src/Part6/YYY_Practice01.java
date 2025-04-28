@@ -12,6 +12,9 @@ import java.util.stream.Stream;
 
 /**
  * 答え：
+ *
+ * 第一次复习:BE    CEF    D→F    EF    F→D    E    E→F    BD→AD    E→A    A→C    BF    E    D    ??F→ABF    B→C    D    A    BF    B?→AB     E→D
+ *
  * 	1:BE
  *  2:CEF
  *  3×:D　→　F

@@ -48,8 +48,11 @@ public class E01_Collect {
 		Stream<String> stream1 = Stream.of("naoki", "akko", "ami");
 		List<String> result1 = stream1.collect(Collectors.toList());
 		System.out.println(result1);//[naoki, akko, ami]
-		
-		// joining()
+
+		// joining()：只能操作Stream<String>
+		//Collectors.joining() 是专门为字符串设计的收集器。
+		//如果是 Stream<Integer> 或 Stream<Person>，你没有直接连接的意义
+		//不是 String 的话，编译器直接报错
 		Stream<String> stream2 = Stream.of("naoki", "akko", "ami");
 		String result2 = stream2.collect(Collectors.joining());
 		System.out.println(result2);//naokiakkoami

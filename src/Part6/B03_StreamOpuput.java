@@ -1,17 +1,11 @@
 package Part6;
 
-import java.lang.StackWalker.Option;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Optionalクラス
+ * Optionalクラス(OptionalInt,OptionalLong,OptionalDouble)
  * 前述したreduce（）メソッドでjava.uti.Optional クラスを使用しました。
  * Optional クラスはSE 8から追加されたクラスで、実体は1つの値を保存しているクラスです。
  * 特徴として、Optionalクラスの各メソッドは、保持している値が存在するか否かによって処理が異なります。
@@ -30,7 +24,26 @@ import java.util.stream.Stream;
  * T orElseGet(Supplier<? super T> other)値が存在する場合は値を返し、それ以外の場合はサプライヤを呼び出し、その呼び出しの結果を返す
  * <X extends Throwable> T orElseThrow(Supplier<? super X> exceptionSupplier) throws X extends Throwable
  * 			値が存在する場合は値を返し、それ以外の場合は指定されたサプライヤによって作成された例外をスローする
- * 
+ *
+ * Stream:
+ * reduce(BinaryOperator) 有初始值reduce(init,BinaryOperator)就返回初始值的数据类型，没有初始值reduce(BinaryOperator)就返回Optional
+ * max(Comparator)
+ * min(Comparator)
+ * findFirst()
+ * findAny()
+ *
+ * IntStream、LongStream,DoubleStream:
+ * reduce(BinaryOperator) 有初始值reduce(init,BinaryOperator)就返回初始值的数据类型，没有初始值reduce(BinaryOperator)就返回Optional
+ * max()
+ * min()
+ * findFirst()
+ * findAny()
+ * average()
+ * sum()
+ * 一般这几个方法，都是返回OptionalXXX
+ * 除了
+ *  average返回OptionalDouble
+ *  sum返回XXX
  */
 public class B03_StreamOpuput {
 

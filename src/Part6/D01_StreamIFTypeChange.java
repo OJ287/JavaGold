@@ -39,11 +39,11 @@ public class D01_StreamIFTypeChange {
 	 *  	LongStream → Stream<Long>
 	 *  	ストリームに関連する型はint,long,doubleのみ
 	 *  引数：
-	 *  Function<T,R>           R apply(T t)
-	 *  ToIntFunction<T>        int applyAsInt(T value)
-	 *  IntFunction<R>          R apply(int value)
-	 *  
-	 *  暗黙の型変換はないが、IntStream,LongStreamに提供されるメソッド
+	 *  Function<T,R>           R apply(T t)                 map()的参数
+	 *  ToIntFunction<T>        int applyAsInt(T value)      mapToXXX()的参数
+	 *  IntFunction<R>          R apply(int value)           mapToObj()的参数
+	 *
+	 *  double型については、暗黙の型変換はないが、IntStream,LongStreamに提供されるメソッド
 	 *  LongStream asLongStream   IntStreamインタフェースで提供。要素をlongに変換した結果から構成されるLongStreamを返す
 	 *  DoubleStream asDoubleStream   IntStreamインタフェースで提供。要素をdoubleに変換した結果から構成されるDoubleStreamを返す
 	 *  LongStream asLongStream   LongStreamインタフェースで提供。要素をdoubleに変換した結果から構成されるDoubleStreamを返す
