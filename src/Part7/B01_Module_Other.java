@@ -29,6 +29,17 @@ package Part7;
  * ● モジュールパス上のすべてのモジュールを requires する
  * ● 名前付きモジュールから自動モジュールの参照が可能（逆でもOK）
  *
+ * 自动的modules名字，先看modules¥META-INF下面的MANIFAST.MF定义的，Automatic-Module-Name:com.XXX
+ * 没有定义的情况下，使用JAR名字（不要扩张子和版本名）
+ * modules的依存性确认命令(java XXX):option
+ * 1.--show-module-resolution
+ * 2.--describe-module(-d)
+ *
+ * 命令：
+ * jdeps
+ * -summary
+ * -jdkinternals
+ * -dotouput
  */
 
 
