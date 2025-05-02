@@ -12,7 +12,20 @@ public class A02_Threads {
 	    a.start();
 	    b.start();
 	    // A:0 B:0 B:1 A:1 B:2 B:3 B:4 A:2 A:3 A:4 
-	    // A:0 A:1 A:2 A:3 A:4 B:0 B:1 B:2 B:3 B:4 
+        // A:0 A:1 A:2 A:3 A:4 B:0 B:1 B:2 B:3 B:4
+
+        System.out.println("-------");
+        // スレッドの作成
+        Thread a1 = new Thread(new ThreadA_02());
+        Thread b1 = new Thread(new ThreadB_02());
+        // スレッドの実行開始
+        a1.setPriority(Thread.MAX_PRIORITY);
+        b1.setPriority(Thread.MIN_PRIORITY);
+        a1.start();
+        b1.start();
+//		a1.start();//“每个线程对象只能启动一次，启动后不能再次调用 start() 方法，否则会抛出 IllegalThreadStateException 异常。”
+        // A:0 B:0 B:1 A:1 B:2 B:3 B:4 A:2 A:3 A:4
+        // A:0 A:1 A:2 A:3 A:4 B:0 B:1 B:2 B:3 B:4
 	}
 }
 
