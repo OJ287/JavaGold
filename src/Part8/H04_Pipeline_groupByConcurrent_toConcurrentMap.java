@@ -106,7 +106,7 @@ import java.util.stream.Stream;
  * |  Map工厂支持     |  支持                        |  支持                        |
  * +------------------+--------------------------------+--------------------------------+
  */
-public class H03_Pipeline_groupByConcurrent_toConcurrentMap {
+public class H04_Pipeline_groupByConcurrent_toConcurrentMap {
     // 自动生成 main 方法
     public static void main(String[] args) {
         // TODO

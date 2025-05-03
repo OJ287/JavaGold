@@ -21,22 +21,18 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * identity：初始值（对于加法为0，乘法为1）
  * accumulator：累加器函数（合并元素到部分结果）
  * combiner：组合器函数（合并并行计算的中间结果）组合器（combiner）合并分片结果时可能任意顺序
- * <p>
+ *
+ *
+ *
  * collect
  * <R> R collect(Supplier<R> supplier,
  * BiConsumer<R, ? super T> accumulator,
  * BiConsumer<R, R> combiner)
  * 参数说明：
- * Supplier<R> supplier：
- * 创建一个新的结果容器（如 new ArrayList<>()）
- * 在并行流中会被调用多次
- * BiConsumer<R, ? super T> accumulator：
- * 将元素累积到结果容器中（如 List::add）
- * 签名：(容器, 元素) -> void
- * BiConsumer<R, R> combiner：
- * 合并两个结果容器（并行流专用）
- * 签名：(容器1, 容器2) -> void
- * <p>
+ * Supplier<R> supplier： 创建一个新的结果容器（如 new ArrayList<>()）在并行流中会被调用多次
+ * BiConsumer<R, ? super T> accumulator：将元素累积到结果容器中（如 List::add） 签名：(容器, 元素) -> void
+ * BiConsumer<R, R> combiner： 合并两个结果容器（并行流专用）签名：(容器1, 容器2) -> void
+ *
  * Q：为什么 collect 更适合可变累积？
  * A：因为 reduce 要求不可变操作（每次返回新对象），而 collect 允许直接修改容器，性能更高且更直观。
  * <p>
