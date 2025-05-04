@@ -7,7 +7,6 @@ package Part8;
  */
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,9 +38,9 @@ public class YYY_Practice01 {
         // TODO
         // 4
         int num = 0;
-        IntStream.iterate(1, i -> 1)
-                .limit(100)
-                .parallel().forEach(i -> ++num);
+//        IntStream.iterate(1, i -> 1)
+//                .limit(100)
+//                .parallel().forEach(i -> ++num);
         System.out.println(num);
         /**
          * /Users/liyanpeng/IdeaProjects/JavaGold/src/Part8/YYY_Practice01.java:38:44
@@ -50,10 +49,10 @@ public class YYY_Practice01 {
 
 
         // 6
-        int length = Arrays.asList("123", "456", "789")
-                .parallelStream()
-                .reduce(0, (s1, s2) -> s1.length() + s2.length());//第二因数BinaryOperator：(引数の不一致: intをjava.lang.Stringに変換できません:)
-        System.out.println(length);
+//        int length = Arrays.asList("123", "456", "789")
+//                .parallelStream()
+//                .reduce(0, (s1, s2) -> s1.length() + s2.length());//第二因数BinaryOperator：(引数の不一致: intをjava.lang.Stringに変換できません:)
+//        System.out.println(length);
 
 
         // 14
@@ -72,6 +71,7 @@ public class YYY_Practice01 {
 
     static Integer foo(int num) {
         //
+        return 0;
     }
 
     static void show(Future<?> f) {
