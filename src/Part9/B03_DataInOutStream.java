@@ -66,11 +66,8 @@ public class B03_DataInOutStream {
         /**
          * 1. 为什么 dis.readUTF() 可以准确地读取单词 "tanaka"？
          * 在你写入数据时，使用了 dos.writeUTF("tanaka")。这个方法写入字符串的方式是先写入字符串的长度（2个字节，表示字符串长度的 short 类型值），然后写入字符串的 UTF-8 编码字节。具体过程如下：
-         *
          * writeUTF("tanaka") 会先写入字符串 "tanaka" 的长度信息（即字符串的字节长度，tanaka 的字节长度是 6，所以会先写入 6，占 2 个字节）。
-         *
          * 接着，写入 "tanaka" 的 UTF-8 字节内容。
-         *
          * 当你调用 dis.readUTF() 时，DataInputStream 会首先读取 2 个字节（字符串的长度信息），然后根据这个长度读取正确数量的字节（即 "tanaka" 的字节内容）。这样，它就能准确地读取出 "tanaka" 字符串。
          */
     }

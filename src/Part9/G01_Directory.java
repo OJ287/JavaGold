@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  * Stream<Path> walk(Path start, FileVisitOption... options)            start：起始路径，options：如 FOLLOW_LINKS   maxDepth不指定默认是Integer.MAX_VALUE      IOException     递归遍历目录，允许设置是否跟随符号链接
  * Stream<Path> walk(Path start, int maxDepth, FileVisitOption... options) start：起始路径，maxDepth：最大深度，options：遍历选项      IOException     最完整的形式，控制深度与符号链接等行为
  * Stream<Path> find(Path start, int maxDepth, BiPredicate<Path,BasicFileAttributes> matcher, FileVisitOption... options)
- * start：起始路径，maxDepth：深度       IOException                 根据条件过滤递归路径，返回匹配 Path 的 Stream
+ * start：起始路径，maxDepth：深度，BiPredicate第一个参数是每个元素文件，第二个参数是文件参数类       IOException                 根据条件过滤递归路径，返回匹配 Path 的 Stream
  * Stream<Path> list(Path dir)                                       dir：目录路径                         IOException                 返回指定目录中一层的文件/子目录 Path 的 Stream
  * Stream<String> lines(Path path)                                   path：要读取的文件路径                IOException                 以 Stream<String> 形式逐行读取文本文件（默认 UTF-8 编码）
  * Stream<String> lines(Path path, Charset cs)                       path：文件路径，cs：字符编码         IOException                 使用指定字符编码逐行读取文件
