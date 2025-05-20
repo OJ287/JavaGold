@@ -284,6 +284,9 @@ package Memo;
  *  8:BE
  */
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
  * ✅✅✅总结
  * 共165
@@ -308,5 +311,48 @@ public class YYY_Practice01 {
     // 自动生成 main 方法
     public static void main(String[] args) {
         // TODO
+        Path path1 = Paths.get(".").normalize();
+
+        System.out.println("Path: '" + path1 + "'");  // 加引号显示空白
+        System.out.println("Name count: " + path1.getNameCount());
+        System.out.println("Is empty: " + path1.toString().isEmpty());
+        System.out.println("Is absolute: " + path1.isAbsolute());
+        System.out.println("Absolute path: " + path1.toAbsolutePath());
+        /**
+         * 虽然Paths.get(".").normalize();返回的是空，但是为了当前路径和完全空路径区分开，count也是认为是1个元素
+         * Path: ''
+         * Name count: 1
+         * Is empty: true
+         * Is absolute: false
+         * Absolute path: /Users/liyanpeng/IdeaProjects/JavaGold
+         */
+
+
+        Path a = Paths.get("/food/../orange.txt");
+        Path b = Paths.get("./lemon.txt");
+        System.out.println(a.resolve(b));
+        System.out.println(b.resolve(a));
+
+
+        String[] words = {"banana", "orange", "apple", "lemon"};
+        Integer[] numbers = {1, 2, 3, 4, 5};
+        CustomType type = new CustomType();          // 原始类型（无泛型）
+        CustomType<String> stringType = new CustomType<>();
+
+        System.out.println(stringType.count(words, "apple")); // 调用1
+        System.out.println(type.count(words, "apple"));        // 调用2
+        System.out.println(type.count(numbers, 3));            // 调用3
+    }
+
+
+}
+
+class CustomType<T> {
+    public <T> int count(T[] anArray, T element) {
+        int count = 0;
+        for (T e : anArray) {
+            if (e.equals(element)) ++count;
+        }
+        return count;
     }
 }
