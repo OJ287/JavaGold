@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 /**
@@ -34,7 +35,11 @@ import java.util.stream.IntStream;
  */
 public class YYY_Practice01 {
     // 自动生成 main 方法
-    public static void main(String[] args) {
+    private static final AtomicInteger val1 = new AtomicInteger();
+    private static int val2 = 0;
+
+    public static void main(String[] args)
+            throws InterruptedException {
         // TODO
         // 4
         int num = 0;
@@ -66,6 +71,25 @@ public class YYY_Practice01 {
         } finally {
             service.shutdown();
         }
+
+
+        // １１
+        System.out.println("-----------11---------");
+        ExecutorService service9 = null;
+        try {
+            service9 = Executors.newSingleThreadExecutor();
+            for (int i = 0; i < 1000000; i++) {
+                service9.execute(() -> {
+                    val1.getAndIncrement();
+                    val2++;
+                });
+            }
+//            Thread.sleep(500);
+            System.out.println(val1 + " " + val2);
+        } finally {
+            service9.shutdown();
+        }
+        System.out.println("-----------11------end---");
     }
 
 
